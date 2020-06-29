@@ -9,6 +9,7 @@ import { push } from 'react-router-redux';
 
 import config from '../../config';
 import { getSetting, setEmail, setName } from '../../settings';
+import i18n from '../../../i18n';
 
 import { conferenceEnded, conferenceJoined } from '../actions';
 import JitsiMeetExternalAPI from '../external_api';
@@ -201,7 +202,11 @@ class Conference extends Component<Props, State> {
         const roomName = url.pathname.split('/').pop();
         const host = this._conference.serverURL.replace(/https?:\/\//, '');
         const searchParameters = Object.fromEntries(url.searchParams);
-        const urlParameters = Object.keys(searchParameters).length ? searchParameters : {};
+        const locale = { lng: i18n.language };
+        const urlParameters = Object.keys(searchParameters).length ? {
+            ...searchParameters,
+            ...locale
+        } : locale;
 
         const configOverwrite = {
             startWithAudioMuted: this.props._startWithAudioMuted,
