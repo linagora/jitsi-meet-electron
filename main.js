@@ -10,7 +10,8 @@ const {
 const contextMenu = require('electron-context-menu');
 const debug = require('electron-debug');
 const isDev = require('electron-is-dev');
-const { autoUpdater } = require('electron-updater');
+
+// const { autoUpdater } = require('electron-updater');
 const windowStateKeeper = require('electron-window-state');
 const {
     initPopupsConfigurationMain,
@@ -35,8 +36,8 @@ app.commandLine.appendSwitch('disable-webrtc-hw-decoding');
 // Needed until robot.js is fixed: https://github.com/octalmage/robotjs/issues/580
 app.allowRendererProcessReuse = false;
 
-autoUpdater.logger = require('electron-log');
-autoUpdater.logger.transports.file.level = 'info';
+// autoUpdater.logger = require('electron-log');
+// autoUpdater.logger.transports.file.level = 'info';
 
 // Enable context menu so things like copy and paste work in input fields.
 contextMenu({
@@ -158,7 +159,7 @@ function createJitsiMeetWindow() {
     setApplicationMenu();
 
     // Check for Updates.
-    autoUpdater.checkForUpdatesAndNotify();
+    // autoUpdater.checkForUpdatesAndNotify();
 
     // Load the previous window state with fallback to defaults.
     const windowState = windowStateKeeper({
