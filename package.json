@@ -64,6 +64,10 @@
         }
       ]
     },
+    "nsis": {
+      "perMachine": true,
+      "oneClick": false
+    },
     "directories": {
       "buildResources": "resources"
     },
